@@ -2,7 +2,7 @@ package Slack::BlockKit::Block::RichText::Link;
 use Moose;
 use MooseX::StrictConstructor;
 
-with 'Slack::BlockKit::Role::HasStyle';
+with 'Slack::BlockKit::Role::HasBasicStyle';
 
 use experimental qw(signatures); # XXX
 

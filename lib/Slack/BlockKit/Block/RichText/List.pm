@@ -4,7 +4,7 @@ use MooseX::StrictConstructor;
 
 use Moose::Util::TypeConstraints qw(class_type enum);
 use MooseX::Types::Moose qw(ArrayRef);
-use Slack::BlockKit::Types qw(RichTextArray);
+use Slack::BlockKit::Types qw(Pixels RichTextArray);
 
 use experimental qw(signatures); # XXX
 
@@ -14,10 +14,11 @@ has elements => (
   handles => { elements => 'elements' },
 );
 
-# pixel things:
-# * indent
-# * offset
-# * border
+# I don't know how to use these successfully. -- rjbs, 2024-06-29
+has [ qw( indent offset border ) ] => (
+  is => 'ro',
+  isa => Pixels(),
+);
 
 has style => (
   is  => 'ro',
