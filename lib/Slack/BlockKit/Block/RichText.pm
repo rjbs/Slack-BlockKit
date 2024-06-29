@@ -2,9 +2,9 @@ package Slack::BlockKit::Block::RichText;
 use Moose;
 use MooseX::StrictConstructor;
 
-use experimental qw(signatures); # XXX
+with 'Slack::BlockKit::Role::Block';
 
-has block_id => (is => 'ro', isa => 'Str', predicate => 'has_block_id');
+use experimental qw(signatures); # XXX
 
 has elements => (
   isa => 'ArrayRef', # <-- Make better
@@ -15,7 +15,6 @@ has elements => (
 sub as_struct ($self) {
   return {
     type => 'rich_text',
-    ($self->has_block_id ? (block_id => $self->block_id) : ()),
     elements => [ map {; $_->as_struct } $self->elements ],
   };
 }
