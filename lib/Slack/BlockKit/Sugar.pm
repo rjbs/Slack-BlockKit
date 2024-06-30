@@ -16,6 +16,7 @@ use Sub::Exporter -setup => {
     qw( richblock ),
     qw( richsection list preformatted quote ), # top-level
     qw( channel emoji link richtext user usergroup ), # deeper
+    qw( bold code italic strike ), # specialized richtext()
 
     # Other Things
     qw( divider header mrkdwn text section )
@@ -131,15 +132,28 @@ sub link {
   });
 }
 
-# ($text) or ($text, {})
-sub richtext ($text, $arg=undef) {
-  $arg //= {};
+# ($text) or ([styles], $text)
+sub richtext {
+  my ($styles, $text)
+    = @_ == 2   ? (@_)
+    : @_ == 1   ? ([], $_[0])
+    : @_ == 0   ? Carp::croak("BlockKit richtext sugar called too few arguments")
+    : @_  > 2   ? Carp::croak("BlockKit richtext sugar called too many arguments")
+    : Carp::confess("unreachable code");
+
+  my $arg = {};
+  $arg->{style}{$_} = 1 for $styles->@*;
 
   Slack::BlockKit::Block::RichText::Text->new({
     %$arg,
     text => $text,
   });
 }
+
+sub bold   ($text) { richtext(['bold'], $text) }
+sub code   ($text) { richtext(['code'], $text) }
+sub italic ($text) { richtext(['italic'], $text) }
+sub strike ($text) { richtext(['strike'], $text) }
 
 sub user {
   my ($arg, $id)

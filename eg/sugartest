@@ -30,7 +30,7 @@ sub example_rich {
   return bk_blocks(
     bk_richblock(
       bk_richsection(
-        "Here is a safe link: ",
+        "Here is a ", bk_italic("safe"), " link: ",
         bk_link("https://fastmail.com/", "click me", { style => { bold => 1 } }),
       ),
       bk_list(

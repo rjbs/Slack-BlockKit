@@ -6,7 +6,7 @@ use JSON::XS qw(encode_json);
 use Slack::BlockKit;
 
 # This is equivalent to the "example_rich" in sugartest.  This code is about
-# fifty lines long.  (Exactly 50, at time of writing.)  The sugared form is 14.
+# sixty lines long.  (Exactly 57, at time of writing.)  The sugared form is 14.
 my $blocks = Slack::BlockKit::BlockCollection->new({
   blocks => [
     Slack::BlockKit::Block::RichText->new({
@@ -14,7 +14,14 @@ my $blocks = Slack::BlockKit::BlockCollection->new({
         Slack::BlockKit::Block::RichText::Section->new({
           elements => [
             Slack::BlockKit::Block::RichText::Text->new({
-              text => "Here is a safe link: ",
+              text => "Here is a ",
+            }),
+            Slack::BlockKit::Block::RichText::Text->new({
+              text  => "safe",
+              style => { italic => 1 },
+            }),
+            Slack::BlockKit::Block::RichText::Text->new({
+              text => " link: ",
             }),
             Slack::BlockKit::Block::RichText::Link->new({
               text  => "click me",
