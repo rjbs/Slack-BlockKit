@@ -12,6 +12,14 @@ has border => (
   isa => Pixels(),
 );
 
+# Now, the documentation says that "link" elements inside "preformatted" blocks
+# are special, and that while normal "link" elements can have (bold, italic,
+# strike, code) styles, they *can't* have (strike) or (code) when inside a
+# preformatted block.
+#
+# Testing shows this is not true, so I have not special-cased anything.  (I
+# actually wrote the code, but then experiments showed it was not enforced.  I
+# filed a bug.)
 has elements => (
   isa => ExpansiveBlockList(),
   traits  => [ 'Array' ],
