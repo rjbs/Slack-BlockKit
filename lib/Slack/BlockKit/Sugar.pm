@@ -2,8 +2,22 @@ package Slack::BlockKit::Sugar;
 use v5.36.0;
 
 use Carp ();
-use Params::Util qw(_HASHLIKE);
 use Slack::BlockKit;
+
+# A small rant: Params::Util provided a perfectly good _HASH0 routine, which I
+# knew I could use here.  But it turns out that years ago, an XS implementation
+# was added to Params::Util, and it's *broken*.  It returns blessed references
+# when the test is meant to exclude them.  The broken Params::Util will prefer
+# XS, but there's Params::Util::PP -- but that code doesn't export any of its
+# symbols.  There's a comment on the ticket from the current maintainer that
+# he's not sure which is right, even though the original documentation makes
+# the intended behavior clear.
+#
+# This cost me a good hour or two.  I *wrote* some of this code, so I was
+# absolutely positive I knew the behavior of _HASH0.  Turns out, nope!
+#
+# https://rt.cpan.org/Ticket/Display.html?id=75561
+my sub _HASH0 { return ref $_[0] eq 'HASH' ? $_[0] : undef; }
 
 use experimental 'builtin';
 
@@ -75,7 +89,7 @@ sub list ($arg, @sections) {
 }
 
 sub olist (@sections) {
-  my $arg = _HASHLIKE($sections[0]) ? (shift @sections) : {};
+  my $arg = _HASH0($sections[0]) ? (shift @sections) : {};
   Slack::BlockKit::Block::RichText::List->new({
     %$arg,
     style => 'ordered',
@@ -84,7 +98,7 @@ sub olist (@sections) {
 }
 
 sub ulist (@sections) {
-  my $arg = _HASHLIKE($sections[0]) ? (shift @sections) : {};
+  my $arg = _HASH0($sections[0]) ? (shift @sections) : {};
   Slack::BlockKit::Block::RichText::List->new({
     %$arg,
     style => 'bullet',
@@ -94,7 +108,7 @@ sub ulist (@sections) {
 
 # ({...}, @( elem | text )
 sub preformatted (@elements) {
-  my $arg = _HASHLIKE($elements[0]) ? (shift @elements) : {};
+  my $arg = _HASH0($elements[0]) ? (shift @elements) : {};
 
   Slack::BlockKit::Block::RichText::Preformatted->new({
     %$arg,
@@ -104,7 +118,7 @@ sub preformatted (@elements) {
 
 # ({...}, @( elem | text )
 sub quote (@elements) {
-  my $arg = _HASHLIKE($elements[0]) ? (shift @elements) : {};
+  my $arg = _HASH0($elements[0]) ? (shift @elements) : {};
 
   Slack::BlockKit::Block::RichText::Quote->new({
     %$arg,
