@@ -33,8 +33,7 @@ sub example_rich {
         "Here is a ", bk_italic("safe"), " link: ",
         bk_link("https://fastmail.com/", "click me", { style => { bold => 1 } }),
       ),
-      bk_list(
-        { style => 'bullet' },
+      bk_ulist(
         "it will be fun",
         bk_richsection("it will be cool", bk_emoji('smile')),
         "it will be enough",

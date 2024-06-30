@@ -15,6 +15,7 @@ use Sub::Exporter -setup => {
     # Rich Text
     qw( richblock ),
     qw( richsection list preformatted quote ), # top-level
+    qw( olist ulist ), # specialized list()
     qw( channel emoji link richtext user usergroup ), # deeper
     qw( bold code italic strike ), # specialized richtext()
 
@@ -66,11 +67,27 @@ sub richsection (@elements) {
   });
 }
 
-# maybe also supply ulist and olist for bullet and ordered styles
 sub list ($arg, @sections) {
-  # my $arg = _HASHLIKE($sections[0]) ? (shift @sections) : {};
   Slack::BlockKit::Block::RichText::List->new({
     %$arg,
+    elements => _rsectionize(@sections),
+  });
+}
+
+sub olist (@sections) {
+  my $arg = _HASHLIKE($sections[0]) ? (shift @sections) : {};
+  Slack::BlockKit::Block::RichText::List->new({
+    %$arg,
+    style => 'ordered',
+    elements => _rsectionize(@sections),
+  });
+}
+
+sub ulist (@sections) {
+  my $arg = _HASHLIKE($sections[0]) ? (shift @sections) : {};
+  Slack::BlockKit::Block::RichText::List->new({
+    %$arg,
+    style => 'bullet',
     elements => _rsectionize(@sections),
   });
 }
