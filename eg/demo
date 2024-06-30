@@ -6,8 +6,11 @@ use experimental 'builtin';
 use lib 'lib';
 
 use Data::Dumper::Concise;
+use Defined::KV;
 use Getopt::Long::Descriptive;
 use JSON::XS qw(encode_json);
+
+binmode *STDOUT, ':encoding(UTF-8)';
 
 my ($opt, $usage) = describe_options(
   '%c %o',
@@ -24,6 +27,10 @@ die "--perl and --pretty are mutually exclusive\n"
 my $filename = "./eg/samples/" . $opt->example;
 die "no such demo file: $filename\n"
   unless -e $filename;
+
+# Samplers can set these for fun.
+$Slack::BlockKit::Demo::emoji    = undef;
+$Slack::BlockKit::Demo::username = undef;
 
 my $blocks = do {
   package Slack::BlockKit::Sample;
@@ -66,6 +73,8 @@ if ($opt->post) {
   my $n = Slack::Notify->new(hook_url => $webhook);
 
   my $res = $n->post(
+    defined_kv(icon_emoji => $Slack::BlockKit::Demo::emoji),
+    defined_kv(username   => $Slack::BlockKit::Demo::username),
     channel => 'blockkit',
     blocks  => $blocks->as_struct,
   );
