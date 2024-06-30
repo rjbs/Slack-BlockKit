@@ -1,8 +1,5 @@
-#!/usr/bin/env perl
+#!perl
 use v5.36.0;
-
-use lib 'lib';
-use JSON::XS qw(encode_json);
 use Slack::BlockKit;
 
 # This is equivalent to the "example_rich" in sugartest.  This code is about
@@ -64,5 +61,3 @@ my $blocks = Slack::BlockKit::BlockCollection->new({
     })
   ]
 });
-
-say encode_json($blocks->as_struct);
