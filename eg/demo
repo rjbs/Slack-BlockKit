@@ -13,9 +13,13 @@ my ($opt, $usage) = describe_options(
   '%c %o',
   [ 'example|X=s',  'what example to run', { default => 'default' } ],
   [ 'perl',         'dumper the blocks struct as Perl, not JSON' ],
+  [ 'pretty',       'prettify JSON output' ],
   [],
   [ 'post',         'actually post' ],
 );
+
+die "--perl and --pretty are mutually exclusive\n"
+  if $opt->perl and $opt->pretty;
 
 my $filename = "./eg/samples/" . $opt->example;
 die "no such demo file: $filename\n"
@@ -40,7 +44,9 @@ my $blocks = do {
 if ($opt->perl) {
   print Dumper($blocks->as_struct);
 } else {
-  say encode_json($blocks->as_struct);
+  my $JSON = JSON::XS->new->canonical;
+  $JSON = $JSON->pretty if $opt->pretty;
+  say $JSON->encode($blocks->as_struct);
 }
 
 if ($opt->post) {
