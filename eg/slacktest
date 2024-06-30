@@ -1,0 +1,61 @@
+#!/usr/bin/env perl
+use v5.36.0;
+
+use lib 'lib';
+use JSON::XS qw(encode_json);
+use Slack::BlockKit;
+
+# This is equivalent to the "example_rich" in sugartest.  This code is about
+# fifty lines long.  (Exactly 50, at time of writing.)  The sugared form is 14.
+my $blocks = Slack::BlockKit::BlockCollection->new({
+  blocks => [
+    Slack::BlockKit::Block::RichText->new({
+      elements => [
+        Slack::BlockKit::Block::RichText::Section->new({
+          elements => [
+            Slack::BlockKit::Block::RichText::Text->new({
+              text => "Here is a safe link: ",
+            }),
+            Slack::BlockKit::Block::RichText::Link->new({
+              text  => "click me",
+              unsafe => 1,
+              url   => "https://fastmail.com/",
+              style => { bold => 1 },
+            }),
+          ],
+        }),
+        Slack::BlockKit::Block::RichText::List->new({
+          style => 'bullet',
+          elements => [
+            Slack::BlockKit::Block::RichText::Section->new({
+              elements => [
+                Slack::BlockKit::Block::RichText::Text->new({
+                  text => "it will be fun",
+                }),
+              ]
+            }),
+            Slack::BlockKit::Block::RichText::Section->new({
+              elements => [
+                Slack::BlockKit::Block::RichText::Text->new({
+                  text => "it will be cool",
+                }),
+                Slack::BlockKit::Block::RichText::Emoji->new({
+                  name => 'smile',
+                }),
+              ]
+            }),
+            Slack::BlockKit::Block::RichText::Section->new({
+              elements => [
+                Slack::BlockKit::Block::RichText::Text->new({
+                  text => "it will be enough",
+                }),
+              ],
+            }),
+          ],
+        }),
+      ],
+    })
+  ]
+});
+
+say encode_json($blocks->as_struct);
