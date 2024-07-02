@@ -10,6 +10,7 @@ use experimental qw(signatures); # XXX
 has border => (
   is => 'ro',
   isa => Pixels(),
+  predicate => 'has_border',
 );
 
 has elements => (
@@ -22,6 +23,7 @@ sub as_struct ($self) {
   return {
     type => 'rich_text_quote',
     elements => [ map {; $_->as_struct } $self->elements ],
+    ($self->has_border ? (border => $self->border) : ()),
   };
 }
 

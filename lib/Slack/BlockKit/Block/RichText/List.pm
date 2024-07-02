@@ -15,10 +15,14 @@ has elements => (
 );
 
 # I don't know how to use these successfully. -- rjbs, 2024-06-29
-has [ qw( indent offset border ) ] => (
-  is => 'ro',
-  isa => Pixels(),
-);
+my @PX_PROPERTIES = qw(indent offset border);
+for my $name (@PX_PROPERTIES) {
+  has $name => (
+    is => 'ro',
+    isa => Pixels(),
+    predicate => "has_$name",
+  );
+}
 
 has style => (
   is  => 'ro',
@@ -31,6 +35,9 @@ sub as_struct ($self) {
     type => 'rich_text_list',
     elements => [ map {; $_->as_struct } $self->elements ],
     style => $self->style,
+
+    (map {; my $p = "has_$_"; ($self->$p ? ($_ => $self->$_) : ()) }
+      @PX_PROPERTIES)
   };
 }
 
