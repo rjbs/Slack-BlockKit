@@ -4,7 +4,7 @@ use MooseX::StrictConstructor;
 
 use Slack::BlockKit::Types qw(ExpansiveBlockList Pixels);
 
-use experimental qw(signatures); # XXX
+use v5.36.0;
 
 # When I tried using this, it got rejected.  Surface-dependent?
 has border => (

@@ -2,7 +2,7 @@ package Slack::BlockKit::Block::RichText::Emoji;
 use Moose;
 use MooseX::StrictConstructor;
 
-use experimental qw(signatures); # XXX
+use v5.36.0;
 
 has name => (
   is  => 'ro',

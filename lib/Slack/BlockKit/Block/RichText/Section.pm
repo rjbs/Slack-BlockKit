@@ -4,7 +4,7 @@ use MooseX::StrictConstructor;
 
 use Slack::BlockKit::Types qw(ExpansiveBlockList);
 
-use experimental qw(signatures); # XXX
+use v5.36.0;
 
 has elements => (
   isa => ExpansiveBlockList(),

@@ -6,7 +6,7 @@ use Moose::Util::TypeConstraints qw(class_type enum);
 use MooseX::Types::Moose qw(ArrayRef);
 use Slack::BlockKit::Types qw(Pixels RichTextArray);
 
-use experimental qw(signatures); # XXX
+use v5.36.0;
 
 has elements => (
   isa => RichTextArray(),

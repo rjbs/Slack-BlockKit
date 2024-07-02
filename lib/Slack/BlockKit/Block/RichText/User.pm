@@ -4,7 +4,7 @@ use MooseX::StrictConstructor;
 
 with 'Slack::BlockKit::Role::HasMentionStyle';
 
-use experimental qw(signatures); # XXX
+use v5.36.0;
 
 has user_id => (
   is  => 'ro',

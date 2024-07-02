@@ -6,7 +6,7 @@ use Moose::Util::TypeConstraints qw(enum);
 
 with 'Slack::BlockKit::Role::Block';
 
-use experimental qw(signatures); # XXX
+use v5.36.0;
 
 has type => (
   is => 'ro',

@@ -4,7 +4,7 @@ use MooseX::StrictConstructor;
 
 with 'Slack::BlockKit::Role::Block';
 
-use experimental qw(signatures); # XXX
+use v5.36.0;
 
 use Moose::Util::TypeConstraints qw(class_type);
 

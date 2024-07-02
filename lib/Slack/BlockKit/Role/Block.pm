@@ -1,7 +1,7 @@
 package Slack::BlockKit::Role::Block;
 use Moose::Role;
 
-use experimental qw(signatures); # XXX
+use v5.36.0;
 
 has block_id => (
   is  => 'ro',

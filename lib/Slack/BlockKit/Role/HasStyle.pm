@@ -1,7 +1,7 @@
 package Slack::BlockKit::Role::HasStyle;
 use MooseX::Role::Parameterized;
 
-use experimental 'signatures';
+use v5.36.0;
 
 use MooseX::Types::Moose qw(ArrayRef Bool);
 use MooseX::Types::Structured qw(Dict Optional);

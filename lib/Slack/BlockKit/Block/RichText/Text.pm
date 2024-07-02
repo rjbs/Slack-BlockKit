@@ -4,7 +4,7 @@ use MooseX::StrictConstructor;
 
 with 'Slack::BlockKit::Role::HasBasicStyle';
 
-use experimental qw(signatures); # XXX
+use v5.36.0;
 
 has text => (
   is  => 'ro',

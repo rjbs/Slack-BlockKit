@@ -31,10 +31,7 @@ blog|https://rjbs.cloud/blog/2024/06/slack-blockkit/>.
 
 =cut
 
-use v5.32.0;
-use warnings;
-
-use experimental qw(signatures); # XXX
+use v5.36.0;
 
 # Boolean and set handling
 use JSON::PP (); # to ensure that JSON::PP::true and ::false are populated

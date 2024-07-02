@@ -19,7 +19,7 @@ use Slack::BlockKit;
 # https://rt.cpan.org/Ticket/Display.html?id=75561
 my sub _HASH0 { return ref $_[0] eq 'HASH' ? $_[0] : undef; }
 
-use experimental 'builtin';
+use experimental 'builtin'; # blessed
 
 use Sub::Exporter -setup => {
   exports => [

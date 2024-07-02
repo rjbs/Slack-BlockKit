@@ -1,7 +1,7 @@
 package Slack::BlockKit::BlockCollection;
 use Moose;
 
-use experimental qw(signatures); # XXX
+use v5.36.0;
 
 use MooseX::Types::Moose qw(ArrayRef);
 use Moose::Util::TypeConstraints qw(role_type);
