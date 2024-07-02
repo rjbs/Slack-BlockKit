@@ -1,4 +1,36 @@
 package Slack::BlockKit;
+# ABSTRACT: a toolkit for building BlockKit blocks for Slack
+
+=head1 OVERVIEW
+
+This library is only useful if you're using L<Slack|https://slack.com/>.
+
+Almost any time you want to send content to Slack that you want to end up in
+front of a human, you will want to use BlockKit.  You can get away without
+using BlockKit if you're only sending plain text or "mrkdwn" text, but even
+then, the lack of an escaping mechanism in mrkdwn can be a problem.
+
+The BlockKit system lets you build quite a few different pieces of
+presentation, but it's fiddly and the error reporting is I<terrible> if you get
+something wrong.  This library is meant to make it I<easy> to write BlockKit
+content, and to provide client-side validation of constructed blocks with
+better (well, less awful) errors when you make a mistake.
+
+B<You probably want to start here>:  L<Slack::BlockKit::Sugar>.  This library
+exports a bunch of functions that can be combined to produce valid BlockKit
+structures.  Each of those functions will produce an object, or maybe several.
+You shouldn't really need to build any of those objects by hand, but you can.
+To find more about the classes shipped with Slack::BlockKit, look at the docs
+for the Sugar library and follow the links from there.
+
+=head1 SECRET ORIGINS
+
+This library was written to improve RJBS's Synergy chat bot.  You can read more
+about this process (and the bot) on L<his
+blog|https://rjbs.cloud/blog/2024/06/slack-blockkit/>.
+
+=cut
+
 use v5.32.0;
 use warnings;
 
