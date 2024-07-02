@@ -10,11 +10,12 @@ has blocks => (
   isa => ArrayRef([ role_type('Slack::BlockKit::Role::Block') ]),
   traits  => [ 'Array' ],
   handles => { blocks => 'elements', block_count => 'count' },
+  predicate => '_has_blocks',
 );
 
 sub BUILD ($self, @) {
   Carp::croak("a BlockCollection's list of blocks can't be empty")
-    unless $self->block_count;
+    unless $self->_has_blocks and $self->block_count;
 }
 
 sub as_struct ($self) {
