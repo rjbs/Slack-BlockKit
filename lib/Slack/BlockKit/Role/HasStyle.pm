@@ -6,10 +6,10 @@ use experimental 'signatures';
 use MooseX::Types::Moose qw(ArrayRef Bool);
 use MooseX::Types::Structured qw(Dict Optional);
 
-my sub boolify ($val) { $val ? \1 : \0 }
-
 my sub _boolset ($hashref) {
-  return { map {; $_ => boolify($hashref->{$_}) } keys %$hashref };
+  return {
+    map {; $_ => Slack::BlockKit::boolify($hashref->{$_}) } keys %$hashref,
+  };
 }
 
 parameter styles => (

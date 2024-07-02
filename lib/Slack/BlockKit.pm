@@ -4,6 +4,12 @@ use warnings;
 
 use experimental qw(signatures); # XXX
 
+# Boolean and set handling
+use JSON::PP (); # to ensure that JSON::PP::true and ::false are populated
+
+sub boolify ($val) { $val ? JSON::PP::true : JSON::PP::false }
+
+# The top-level collection object
 use Slack::BlockKit::BlockCollection;
 
 # Rich Text

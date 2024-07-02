@@ -44,8 +44,8 @@ sub as_struct ($self) {
   return {
     type => $self->type, # (not the object type, as with a block element)
     text => $self->text,
-    ($self->has_emoji     ? (emoji    => $self->emoji)   : ()),
-    ($self->has_verbatim  ? (verbatim => $self->verbatim) : ()),
+    ($self->has_emoji     ? (emoji    => Slack::BlockKit::boolify($self->emoji))   : ()),
+    ($self->has_verbatim  ? (verbatim => Slack::BlockKit::boolify($self->verbatim)) : ()),
   };
 }
 

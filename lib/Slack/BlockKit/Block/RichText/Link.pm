@@ -24,14 +24,12 @@ has unsafe => (
   predicate => 'has_unsafe',
 );
 
-my sub boolify ($val) { $val ? \1 : \0 }
-
 sub as_struct ($self) {
   return {
     type => 'link',
 
     ($self->has_text    ? (text   => $self->text)             : ()),
-    ($self->has_unsafe  ? (unsafe => boolify($self->unsafe))  : ()),
+    ($self->has_unsafe  ? (unsafe => Slack::BlockKit::boolify($self->unsafe))  : ()),
     url => $self->url,
   };
 }
