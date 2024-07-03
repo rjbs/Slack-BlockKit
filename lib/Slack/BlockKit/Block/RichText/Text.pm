@@ -15,7 +15,7 @@ has text => (
 sub as_struct ($self) {
   return {
     type => 'text',
-    text => $self->text,
+    text => q{} . $self->text,
   };
 }
 

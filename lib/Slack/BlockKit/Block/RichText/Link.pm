@@ -28,7 +28,7 @@ sub as_struct ($self) {
   return {
     type => 'link',
 
-    ($self->has_text    ? (text   => $self->text)             : ()),
+    ($self->has_text    ? (text   => q{} . $self->text) : ()),
     ($self->has_unsafe  ? (unsafe => Slack::BlockKit::boolify($self->unsafe))  : ()),
     url => $self->url,
   };
