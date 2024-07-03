@@ -1,4 +1,6 @@
 package Slack::BlockKit::Sugar;
+# ABSTRACT: sugar for building BlockKit structures easily (start here!)
+
 use v5.36.0;
 
 use Carp ();
@@ -20,6 +22,19 @@ use Slack::BlockKit;
 my sub _HASH0 { return ref $_[0] eq 'HASH' ? $_[0] : undef; }
 
 use experimental 'builtin'; # blessed
+
+=head1 OVERVIEW
+
+This module exports a bunch of functions that can be composed to build BlockKit
+block collections, which can then be easily turned into a data structure that
+can be serialized.
+
+If you learn to use I<this> library, you can generally ignore the other dozen
+(more!) modules in this distribution.  On the other hand, you B<must> more or
+less understand how BlockKit works, which means reading the L<BlockKit
+documentation|https://api.slack.com/block-kit> at Slack's API site.
+
+=cut
 
 use Sub::Exporter -setup => {
   exports => [

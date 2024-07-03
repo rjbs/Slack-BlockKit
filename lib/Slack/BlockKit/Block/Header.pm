@@ -1,12 +1,29 @@
 package Slack::BlockKit::Block::Header;
+# ABSTRACT: a BlockKit header block
+
 use Moose;
 use MooseX::StrictConstructor;
 
 with 'Slack::BlockKit::Role::Block';
 
+=head1 OVERVIEW
+
+This object represents a "header" block.  These blocks only have one special
+attribute: the text they display.
+
+=cut
+
 use v5.36.0;
 
 use Moose::Util::TypeConstraints qw(class_type);
+
+=attr text
+
+The C<text> attribute must be a L<text object|Slack::BlockKit::CompObj::Text>
+with the text that will be displayed in the header.  The C<type> of that object
+must be C<plain_text>, not C<mrkdwn>.
+
+=cut
 
 has text => (
   is  => 'ro',

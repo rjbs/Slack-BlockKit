@@ -1,8 +1,20 @@
 package Slack::BlockKit::Block::Section;
+# ABSTRACT: a BlockKit section block, used to collect text
+
 use Moose;
 use MooseX::StrictConstructor;
 
 with 'Slack::BlockKit::Role::Block';
+
+=head1 OVERVIEW
+
+This represents a C<section> block, which is commonly used to contain text to
+be sent.  Don't confuse this class with L<Slack::BlockKit::Block::RichText> or
+L<Slack::BlockKit::Block::RichText::Section>, which are used to present I<rich>
+text.  A "normal" section block can only present rich text in the form of
+C<mrkdwn>-type text objects.
+
+=cut
 
 use v5.36.0;
 
@@ -11,11 +23,32 @@ use MooseX::Types::Moose qw(ArrayRef);
 
 # I have intentionally omitted "accessory" for now.
 
+=attr text
+
+This is a L<text composition object|Slack::BlockKit::CompObj::Text> with the
+text to be displayed in this block.
+
+If you provide C<text>, then providing C<fields> is an error and will cause an
+exception to be raised.
+
+=cut
+
 has text => (
   is  => 'ro',
   isa => class_type('Slack::BlockKit::CompObj::Text'),
   predicate => 'has_text',
 );
+
+=attr fields
+
+This is a an arrayref of L<text composition
+object|Slack::BlockKit::CompObj::Text> with the text to be displayed in this
+block.  These objects will be displayed in two columns, generally.
+
+If you provide C<fields>, then providing C<text> is an error and will cause an
+exception to be raised.
+
+=cut
 
 has fields => (
   isa => ArrayRef([ class_type('Slack::BlockKit::CompObj::Text') ]),

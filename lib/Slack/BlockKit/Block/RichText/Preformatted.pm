@@ -1,16 +1,39 @@
 package Slack::BlockKit::Block::RichText::Preformatted;
+# ABSTRACT: a BlockKit preformatted rich text element
+
 use Moose;
 use MooseX::StrictConstructor;
 
 use Slack::BlockKit::Types qw(ExpansiveElementList Pixels);
 
+=head1 OVERVIEW
+
+This is a "preformatted" element, which basically just means a code block of
+the sort you'd get with C<``` ... ```> in Markdown.
+
+=cut
+
 use v5.36.0;
 
-# When I tried using this, it got rejected.  Surface-dependent?
+=attr border
+
+This property is meant to be the number of pixels wide the border is.  In
+practice, the author has only found this to cause Slack to reject BlockKit
+structures.
+
+=cut
+
 has border => (
   is => 'ro',
   isa => Pixels(),
 );
+
+=attr elements
+
+This is an arrayref of rich text elements.  For more information, see the slack
+BlockKit documentation.
+
+=cut
 
 # Now, the documentation says that "link" elements inside "preformatted" blocks
 # are special, and that while normal "link" elements can have (bold, italic,

@@ -1,5 +1,23 @@
 package Slack::BlockKit::Role::HasStyle;
+# ABSTRACT: a parameterized role for objects with styles
+
 use MooseX::Role::Parameterized;
+
+=head1 OVERVIEW 
+
+This role exists to help write classes for BlockKit objects that have text
+styles applied.  Because not all objects with styles permit all the same
+styles, this is a I<parameterized> role, and must be included by providing a
+C<styles> parameter, which is an arrayref of style names that may be enabled or
+disabled on an object.
+
+When a BlockKit object class that composes this role is converted into a data
+structure with C<as_struct>, the styled defined in that instance's C<style>
+hash will be added as JSON boolean objects.
+
+You probably don't need to think about this role, though.
+
+=cut
 
 use v5.36.0;
 
