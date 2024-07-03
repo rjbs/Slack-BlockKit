@@ -2,7 +2,7 @@ package Slack::BlockKit::Types;
 use v5.36.0;
 
 use MooseX::Types -declare => [qw(
-  ExpansiveBlockList
+  ExpansiveElementList
   Pixels
   RichTextArray
   RichTextStyle
@@ -12,7 +12,7 @@ use MooseX::Types -declare => [qw(
 use MooseX::Types::Moose qw(ArrayRef Bool Int);
 use MooseX::Types::Structured qw(Dict Optional);
 
-subtype ExpansiveBlockList, as ArrayRef[
+subtype ExpansiveElementList, as ArrayRef[
   union([
     map {; class_type("Slack::BlockKit::Block::RichText::$_") }
       (qw( Channel Emoji Link Text User UserGroup ))

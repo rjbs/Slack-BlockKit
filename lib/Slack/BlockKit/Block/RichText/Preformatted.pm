@@ -2,7 +2,7 @@ package Slack::BlockKit::Block::RichText::Preformatted;
 use Moose;
 use MooseX::StrictConstructor;
 
-use Slack::BlockKit::Types qw(ExpansiveBlockList Pixels);
+use Slack::BlockKit::Types qw(ExpansiveElementList Pixels);
 
 use v5.36.0;
 
@@ -21,7 +21,7 @@ has border => (
 # actually wrote the code, but then experiments showed it was not enforced.  I
 # filed a bug.)
 has elements => (
-  isa => ExpansiveBlockList(),
+  isa => ExpansiveElementList(),
   traits  => [ 'Array' ],
   handles => { elements => 'elements' },
 );

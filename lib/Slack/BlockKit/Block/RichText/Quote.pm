@@ -2,7 +2,7 @@ package Slack::BlockKit::Block::RichText::Quote;
 use Moose;
 use MooseX::StrictConstructor;
 
-use Slack::BlockKit::Types qw(ExpansiveBlockList Pixels);
+use Slack::BlockKit::Types qw(ExpansiveElementList Pixels);
 
 use v5.36.0;
 
@@ -14,7 +14,7 @@ has border => (
 );
 
 has elements => (
-  isa => ExpansiveBlockList(),
+  isa => ExpansiveElementList(),
   traits  => [ 'Array' ],
   handles => { elements => 'elements' },
 );

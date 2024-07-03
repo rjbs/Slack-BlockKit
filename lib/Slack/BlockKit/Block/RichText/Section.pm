@@ -2,12 +2,12 @@ package Slack::BlockKit::Block::RichText::Section;
 use Moose;
 use MooseX::StrictConstructor;
 
-use Slack::BlockKit::Types qw(ExpansiveBlockList);
+use Slack::BlockKit::Types qw(ExpansiveElementList);
 
 use v5.36.0;
 
 has elements => (
-  isa => ExpansiveBlockList(),
+  isa => ExpansiveElementList(),
   traits  => [ 'Array' ],
   handles => { elements => 'elements' },
 );
