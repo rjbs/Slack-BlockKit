@@ -1,13 +1,14 @@
 package Slack::BlockKit::Block::RichText;
 use Moose;
 use MooseX::StrictConstructor;
+use Slack::BlockKit::Types qw(RichTextBlocks);
 
 with 'Slack::BlockKit::Role::Block';
 
 use v5.36.0;
 
 has elements => (
-  isa => 'ArrayRef', # <-- Make better
+  isa => RichTextBlocks(),
   traits  => [ 'Array' ],
   handles => { elements => 'elements' },
 );
@@ -19,5 +20,6 @@ sub as_struct ($self) {
   };
 }
 
+no Slack::BlockKit::Types;
 no Moose;
 __PACKAGE__->meta->make_immutable;
