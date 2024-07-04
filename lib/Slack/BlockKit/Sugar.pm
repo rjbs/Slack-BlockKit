@@ -72,8 +72,8 @@ You can use this set of calls to the sugar functions:
 
 =head2 Importing the functions
 
-This library uses L<Sub::Exporter for exporting its functions.  That means that
-they can be renamed during import.  Since the names of these functions are
+This library uses L<Sub::Exporter> for exporting its functions.  That means
+that they can be renamed during import.  Since the names of these functions are
 fairly generic, you might prefer to write this:
 
     use Slack::BlockKit::Sugar -all => { -prefix => 'bk_' };

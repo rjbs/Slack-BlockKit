@@ -11,7 +11,7 @@ The RichText block is pretty boring, but must exist to contain all the other
 rich text object:
 
 =for :list
-* L<User        |Slack::BlockKit::Block::RichText::User
+* L<User        |Slack::BlockKit::Block::RichText::User>
 * L<Link        |Slack::BlockKit::Block::RichText::Link>
 * L<UserGroup   |Slack::BlockKit::Block::RichText::UserGroup>
 * L<List        |Slack::BlockKit::Block::RichText::List>

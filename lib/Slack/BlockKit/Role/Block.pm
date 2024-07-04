@@ -5,7 +5,7 @@ use Moose::Role;
 
 use v5.36.0;
 
-=haed1 OVERVIEW
+=head1 OVERVIEW
 
 This role is composed by any "block" in BlockKit.  The definition of what is or
 isn't a block is not well defined, but here it means "anything that can be
