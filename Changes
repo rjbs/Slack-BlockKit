@@ -1,5 +1,7 @@
 Revision history for Slack-BlockKit
 
 {{$NEXT}}
+
+0.001     2024-07-03 21:50:46-04:00 America/New_York
         - a first release, to be considered extremely likely to change in
           incompatible ways
