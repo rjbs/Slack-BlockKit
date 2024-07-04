@@ -23,6 +23,12 @@ my sub _HASH0 { return ref $_[0] eq 'HASH' ? $_[0] : undef; }
 
 use experimental 'builtin'; # blessed
 
+=head1 ACHTUNG
+
+This library seems pretty good to me, its author, but it hasn't seen much use
+yet.  As it gets used, it may change in somewhat backward-incompatible ways.
+Upgrade carefully until this warning goes away!
+
 =head1 OVERVIEW
 
 This module exports a bunch of functions that can be composed to build BlockKit
