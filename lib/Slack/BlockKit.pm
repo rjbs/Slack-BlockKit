@@ -5,7 +5,7 @@ package Slack::BlockKit;
 
 This library is only useful if you're using L<Slack|https://slack.com/>.
 
-Almost any time you want to send content to Slack that you want to end up in
+Almost any time you want to send content to Slack and you want to end up in
 front of a human, you will want to use BlockKit.  You can get away without
 using BlockKit if you're only sending plain text or "mrkdwn" text, but even
 then, the lack of an escaping mechanism in mrkdwn can be a problem.
