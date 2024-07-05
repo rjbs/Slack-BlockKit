@@ -1,23 +1,23 @@
 # Slack::BlockKit
 
 Almost any time you want to send content to [Slack](https://slack.com/), and
-you want to end up in front of a human, you will want to use BlockKit.  You can
-get away without using BlockKit if you're only sending plain text or "mrkdwn"
-text, but even then, the lack of an escaping mechanism in mrkdwn can be a
-problem.
+you want to end up in front of a human, you will want to use Block Kit.  You
+can get away without using Block Kit if you're only sending plain text or
+"mrkdwn" text, but even then, the lack of an escaping mechanism in mrkdwn can
+be a problem.
 
-The BlockKit system lets you build quite a few different pieces of
+The Block Kit system lets you build quite a few different pieces of
 presentation, but it's fiddly and the error reporting is *terrible* if you get
-something wrong.  This library is meant to make it *easy* to write BlockKit
+something wrong.  This library is meant to make it *easy* to write Block Kit
 content, and to provide client-side validation of constructed blocks with
 better (well, less awful) errors when you make a mistake.
 
 The library you're most likely to want to use is
 [Slack::BlockKit::Sugar](https://metacpan.org/pod/Slack::BlockKit::Sugar),
-which exports a bunch of functions that can be combined to produce valid
-BlockKit structures.  Each of those functions will produce an object, or maybe
+which exports a bunch of functions that can be combined to produce valid Block
+Kit structures.  Each of those functions will produce an object, or maybe
 several.  You shouldn't really need to build any of those objects by hand, but
-you can.  To find more about the classes shipped with Slack::BlockKit, look at
+you can.  To find more about the classes shipped with Slack::Block Kit, look at
 the docs for the Sugar library and follow the links from there.
 
 For example, to produce something roughly equivalent to this Markdown:

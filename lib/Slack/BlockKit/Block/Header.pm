@@ -1,5 +1,5 @@
 package Slack::BlockKit::Block::Header;
-# ABSTRACT: a BlockKit header block
+# ABSTRACT: a Block Kit header block
 
 use Moose;
 use MooseX::StrictConstructor;

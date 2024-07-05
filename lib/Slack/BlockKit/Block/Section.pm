@@ -1,5 +1,5 @@
 package Slack::BlockKit::Block::Section;
-# ABSTRACT: a BlockKit section block, used to collect text
+# ABSTRACT: a Block Kit section block, used to collect text
 
 use Moose;
 use MooseX::StrictConstructor;

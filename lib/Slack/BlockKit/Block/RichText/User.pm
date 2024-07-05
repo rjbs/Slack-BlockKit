@@ -1,5 +1,5 @@
 package Slack::BlockKit::Block::RichText::User;
-# ABSTRACT: a BlockKit rich text element that mentions a @user
+# ABSTRACT: a Block Kit rich text element that mentions a @user
 
 use Moose;
 use MooseX::StrictConstructor;

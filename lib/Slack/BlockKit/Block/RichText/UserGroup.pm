@@ -1,5 +1,5 @@
 package Slack::BlockKit::Block::RichText::UserGroup;
-# ABSTRACT: a BlockKit rich text element that mentions a @usergroup
+# ABSTRACT: a Block Kit rich text element that mentions a @usergroup
 
 use Moose;
 use MooseX::StrictConstructor;
@@ -8,8 +8,9 @@ with 'Slack::BlockKit::Role::HasMentionStyle';
 
 =head1 OVERVIEW
 
-This represents the mention of a specific Slack user group in a hunk of rich text.
-The group name will be styled and linked-to.  So, to send something like:
+This represents the mention of a specific Slack user group in a hunk of rich
+text.  The group name will be styled and linked-to.  So, to send something
+like:
 
     I will ask @team-tam.
 

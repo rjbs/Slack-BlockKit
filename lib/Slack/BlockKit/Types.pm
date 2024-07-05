@@ -1,5 +1,5 @@
 package Slack::BlockKit::Types;
-# ABSTRACT: Moose type constraints used internally by Slack::BlockKit
+# ABSTRACT: Moose type constraints used internally by Slack::Block Kit
 use v5.36.0;
 
 =head1 OVERVIEW

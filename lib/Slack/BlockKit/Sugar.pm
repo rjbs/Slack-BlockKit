@@ -1,5 +1,5 @@
 package Slack::BlockKit::Sugar;
-# ABSTRACT: sugar for building BlockKit structures easily (start here!)
+# ABSTRACT: sugar for building Block Kit structures easily (start here!)
 
 use v5.36.0;
 
@@ -31,16 +31,16 @@ Upgrade carefully until this warning goes away!
 
 =head1 OVERVIEW
 
-This module exports a bunch of functions that can be composed to build BlockKit
-block collections, which can then be easily turned into a data structure that
-can be serialized.
+This module exports a bunch of functions that can be composed to build Block
+Kit block collections, which can then be easily turned into a data structure
+that can be serialized.
 
 If you learn to use I<this> library, you can generally ignore the other dozen
 (more!) modules in this distribution.  On the other hand, you B<must> more or
-less understand how BlockKit works, which means reading the L<BlockKit
+less understand how Block Kit works, which means reading the L<BlockKit
 documentation|https://api.slack.com/block-kit> at Slack's API site.
 
-The key is to have a decent idea of the BlockKit structure you want.  Knowing
+The key is to have a decent idea of the Block Kit structure you want.  Knowing
 that, you can look at the list of functions provided by this library and
 compose them together.  Start with a call to C<blocks>, passing the result of
 calling other generators to it.  In the end, you'll have an object on which you
@@ -567,7 +567,7 @@ object and then used the same way.
 
 Otherwise, you'll have to pass a reference to a hash of argument that will be
 passed to the section constructor.  If this function feels weird, it might just
-be because the C<section> element in BlockKit is a bit weird.  Sorry!
+be because the C<section> element in Block Kit is a bit weird.  Sorry!
 
 =cut
 

@@ -1,5 +1,5 @@
 package Slack::BlockKit::Block::RichText;
-# ABSTRACT: the top-level rich text block in BlockKit
+# ABSTRACT: the top-level rich text block in Block Kit
 
 use Moose;
 use MooseX::StrictConstructor;
@@ -24,7 +24,7 @@ rich text object:
 
 As usual, these classes are I<lightly> documented in the Slack::BlockKit
 distribution, but to really understand how they're meant to be used, see the
-Slack BlockKit documentation on Slack.
+Slack Block Kit documentation on Slack.
 
 =cut
 

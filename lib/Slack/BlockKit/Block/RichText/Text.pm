@@ -1,5 +1,5 @@
 package Slack::BlockKit::Block::RichText::Text;
-# ABSTRACT: a BlockKit rich text object for the text in the rich text
+# ABSTRACT: a Block Kit rich text object for the text in the rich text
 
 use Moose;
 use MooseX::StrictConstructor;
@@ -10,7 +10,7 @@ with 'Slack::BlockKit::Role::HasBasicStyle';
 
 When building a hunk of rich text with Slack::BlockKit, it's this object that
 contains most of the actual text.  These objects represent the objects in
-BlockKit with a C<type> of "text".
+Block Kit with a C<type> of "text".
 
 This class includes L<Slack::BlockKit::Role::HasBasicStyle>, so these objects
 can have C<bold>, C<code>, C<italic>, and C<strike> styles.

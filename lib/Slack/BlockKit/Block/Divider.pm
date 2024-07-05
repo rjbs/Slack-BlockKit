@@ -1,5 +1,5 @@
 package Slack::BlockKit::Block::Divider;
-# ABSTRACT: a BlockKit "divider" block
+# ABSTRACT: a Block Kit "divider" block
 use Moose;
 use MooseX::StrictConstructor;
 
@@ -7,7 +7,7 @@ with 'Slack::BlockKit::Role::Block';
 
 =head1 OVERVIEW
 
-This is possibly the simplest block in BlockKit.  It's a divider.  It has no
+This is possibly the simplest block in Block Kit.  It's a divider.  It has no
 attributes other than its type and optionally its block id.
 
 =cut

@@ -1,5 +1,5 @@
 package Slack::BlockKit::Block::RichText::Channel;
-# ABSTRACT: a BlockKit rich text element that mentions a #channel
+# ABSTRACT: a Block Kit rich text element that mentions a #channel
 
 use Moose;
 use MooseX::StrictConstructor;

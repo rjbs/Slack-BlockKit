@@ -1,5 +1,5 @@
 package Slack::BlockKit::Block::RichText::Quote;
-# ABSTRACT: a BlockKit rich text "quoted text" block
+# ABSTRACT: a Block Kit rich text "quoted text" block
 
 use Moose;
 use MooseX::StrictConstructor;
@@ -18,7 +18,7 @@ use v5.36.0;
 =attr border
 
 This property is meant to be the number of pixels wide the border is.  In
-practice, the author has only found this to cause Slack to reject BlockKit
+practice, the author has only found this to cause Slack to reject Block Kit
 structures.
 
 =cut

@@ -1,12 +1,12 @@
 package Slack::BlockKit::Block::RichText::Emoji;
-# ABSTRACT: a BlockKit rich text element for a :colon_code: emoji
+# ABSTRACT: a Block Kit rich text element for a :colon_code: emoji
 
 use Moose;
 use MooseX::StrictConstructor;
 
 =head1 OVERVIEW
 
-This represents an C<emoji> element in BlockKit, which are generally put in
+This represents an C<emoji> element in Block Kit, which are generally put in
 place of or between L<text|Slack::BlockKit::Block::RichText::Text> elements in
 rich text sections.
 

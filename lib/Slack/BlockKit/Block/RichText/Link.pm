@@ -1,5 +1,5 @@
 package Slack::BlockKit::Block::RichText::Link;
-# ABSTRACT: a BlockKit rich text hyperlink element
+# ABSTRACT: a Block Kit rich text hyperlink element
 
 use Moose;
 use MooseX::StrictConstructor;
@@ -8,7 +8,7 @@ with 'Slack::BlockKit::Role::HasBasicStyle';
 
 =head1 OVERVIEW
 
-This represents a hyperlink element in rich text in BlockKit.
+This represents a hyperlink element in rich text in Block Kit.
 
 =cut
 
@@ -31,7 +31,7 @@ has url => (
 This is the text displayed for the link.  It's optional, and Slack will display
 the URL if no text was given.
 
-This attribute stores a string, not any form of BlockKit text object.
+This attribute stores a string, not any form of Block Kit text object.
 
 =cut
 

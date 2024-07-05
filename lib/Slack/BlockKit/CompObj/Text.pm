@@ -1,5 +1,5 @@
 package Slack::BlockKit::CompObj::Text;
-# ABSTRACT: a BlockKit "composition object" for text
+# ABSTRACT: a Block Kit "composition object" for text
 use Moose;
 use MooseX::StrictConstructor;
 
@@ -10,7 +10,7 @@ with 'Slack::BlockKit::Role::Block';
 =head1 OVERVIEW
 
 This is the text "composition object", which is used for non-rich text values
-in several places in BlockKit.
+in several places in Block Kit.
 
 =cut
 

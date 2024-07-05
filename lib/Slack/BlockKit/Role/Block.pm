@@ -1,5 +1,5 @@
 package Slack::BlockKit::Role::Block;
-# ABSTRACT: a BlockKit block object
+# ABSTRACT: a Block Kit block object
 
 use Moose::Role;
 
@@ -7,8 +7,8 @@ use v5.36.0;
 
 =head1 OVERVIEW
 
-This role is composed by any "block" in BlockKit.  The definition of what is or
-isn't a block is not well defined, but here it means "anything that can be
+This role is composed by any "block" in Block Kit.  The definition of what is
+or isn't a block is not well defined, but here it means "anything that can be
 turned into a struct and has an optional C<block_id> attribute".
 
 =attr block_id

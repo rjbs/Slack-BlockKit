@@ -1,5 +1,5 @@
 package Slack::BlockKit::Block::RichText::List;
-# ABSTRACT: a BlockKit rich text list element
+# ABSTRACT: a Block Kit rich text list element
 use Moose;
 use MooseX::StrictConstructor;
 

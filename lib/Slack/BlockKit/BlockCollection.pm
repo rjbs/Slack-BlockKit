@@ -1,12 +1,12 @@
 package Slack::BlockKit::BlockCollection;
-# ABSTRACT: a collection of BlockKit blocks
+# ABSTRACT: a collection of Block Kit blocks
 use Moose;
 
 =head1 OVERVIEW
 
-This is the very top level "array of BlockKit blocks" object that exists mostly
-to serve as a container for the blocks that are your real message.  You don't
-exactly need it, but its C<< ->as_struct >> method will collect all the
+This is the very top level "array of Block Kit blocks" object that exists
+mostly to serve as a container for the blocks that are your real message.  You
+don't exactly need it, but its C<< ->as_struct >> method will collect all the
 structs created by its contained blocks, so it's easy to pass around as "the
 thing that gets sent to Slack".
 

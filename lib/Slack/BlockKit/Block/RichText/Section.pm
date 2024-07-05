@@ -19,7 +19,7 @@ use v5.36.0;
 =attr elements
 
 This must be an arrayref of RichText element objects, from the approved list
-according to the BlockKit docs.
+according to the Block Kit docs.
 
 =cut
 

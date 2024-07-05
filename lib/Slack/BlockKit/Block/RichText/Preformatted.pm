@@ -1,5 +1,5 @@
 package Slack::BlockKit::Block::RichText::Preformatted;
-# ABSTRACT: a BlockKit preformatted rich text element
+# ABSTRACT: a Block Kit preformatted rich text element
 
 use Moose;
 use MooseX::StrictConstructor;
@@ -18,7 +18,7 @@ use v5.36.0;
 =attr border
 
 This property is meant to be the number of pixels wide the border is.  In
-practice, the author has only found this to cause Slack to reject BlockKit
+practice, the author has only found this to cause Slack to reject Block Kit
 structures.
 
 =cut
@@ -31,7 +31,7 @@ has border => (
 =attr elements
 
 This is an arrayref of rich text elements.  For more information, see the slack
-BlockKit documentation.
+Block Kit documentation.
 
 =cut
 
