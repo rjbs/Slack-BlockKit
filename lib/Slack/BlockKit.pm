@@ -44,6 +44,7 @@ use Slack::BlockKit::BlockCollection;
 # Rich Text
 use Slack::BlockKit::Block::RichText;
 use Slack::BlockKit::Block::RichText::Channel;
+use Slack::BlockKit::Block::RichText::Date;
 use Slack::BlockKit::Block::RichText::Emoji;
 use Slack::BlockKit::Block::RichText::Link;
 use Slack::BlockKit::Block::RichText::List;

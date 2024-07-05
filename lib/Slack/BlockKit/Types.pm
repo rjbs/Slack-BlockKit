@@ -32,7 +32,7 @@ subtype RichTextBlocks, as ArrayRef[
 subtype ExpansiveElementList, as ArrayRef[
   union([
     map {; class_type("Slack::BlockKit::Block::RichText::$_") }
-      (qw( Channel Emoji Link Text User UserGroup ))
+      (qw( Channel Date Emoji Link Text User UserGroup ))
   ])
 ];
 

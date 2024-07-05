@@ -92,7 +92,7 @@ use Sub::Exporter -setup => {
     qw( richblock ),
     qw( richsection list preformatted quote ), # top-level
     qw( olist ulist ), # specialized list()
-    qw( channel emoji link richtext user usergroup ), # deeper
+    qw( channel date emoji link richtext user usergroup ), # deeper
     qw( bold code italic strike ), # specialized richtext()
 
     # Other Things
@@ -309,7 +309,7 @@ sub quote (@elements) {
   my $rich_text_channel = channel($channel_id);
   # or
   my $rich_text_channel = channel(\%arg, $channel_id);
-  
+
 This function returns a L<channel mention
 object|Slack::BlockKit::Block::RichText::Channel>, which can be used among
 other rich text elements to "mention" a channel.  The C<$channel_id> should be
@@ -329,6 +329,35 @@ sub channel {
   Slack::BlockKit::Block::RichText::Channel->new({
     %$arg,
     channel_id => $id,
+  });
+}
+
+=func date
+
+  my $rich_text_date = date($timestamp, \%arg);
+
+This returns a L<rich text date object|Slack::BlockKit::Block::RichText::Date>
+for the given time (a unix timestamp).  If given, the referenced C<%arg> can
+contain additional arguments to the Date constructor.
+
+Date formatting objects have a mandatory C<format> property.  If none is given
+in C<%arg>, the default is:
+
+  \x{200b}{date_short_pretty} at {time}
+
+Why that weird first character?  It's a zero-width space, and suppresses the
+capitalization of "yesterday" (or other words) at the start.  This
+capitalization seems like a bug (or bad design) in Slack.
+
+=cut
+
+sub date ($timestamp, $arg=undef) {
+  $arg //= {};
+
+  Slack::BlockKit::Block::RichText::Date->new({
+    format => "\x{200b}{date_short_pretty} at {time}",
+    %$arg,
+    timestamp => $timestamp,
   });
 }
 
@@ -450,7 +479,7 @@ sub strike ($text) { richtext(['strike'], $text) }
   my $rich_text_user = user($user_id);
   # or
   my $rich_text_user = user(\%arg, $user_id);
-  
+
 This function returns a L<user mention
 object|Slack::BlockKit::Block::RichText::User>, which can be used among
 other rich text elements to "mention" a user.  The C<$user_id> should be
