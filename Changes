@@ -1,6 +1,7 @@
 Revision history for Slack-BlockKit
 
 {{$NEXT}}
+        - add TO_JSON to BlockCollection
 
 0.003     2025-05-25 21:53:56-04:00 America/New_York
         - update dist metadata

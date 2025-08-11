@@ -40,6 +40,10 @@ sub as_struct ($self) {
   return [ map {; $_->as_struct } $self->blocks ];
 }
 
+sub TO_JSON ($self) {
+  return $self->as_struct;
+}
+
 no Moose;
 no MooseX::Types::Moose;
 no Moose::Util::TypeConstraints;
