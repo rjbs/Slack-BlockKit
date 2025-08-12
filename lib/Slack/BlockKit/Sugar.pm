@@ -96,7 +96,7 @@ use Sub::Exporter -setup => {
     qw( bold code italic strike ), # specialized richtext()
 
     # Other Things
-    qw( divider header mrkdwn text section )
+    qw( context divider header mrkdwn text section )
   ],
 };
 
@@ -530,6 +530,42 @@ sub usergroup {
   });
 }
 
+=func context
+
+  my $context = context(@text_objs_or_strings);
+
+This function returns a L<context object|Slack::BlockKit::Block::Context>.  You
+can pass it a list of values, each of which is either a string or a L<text
+object|Slack::BlockKit::CompObj::Text>.  Strings will be promoted to
+C<mrkdwn>-type text objects.
+
+=cut
+
+sub context (@args) {
+  my @elements;
+
+  ARG: for my $arg (@args) {
+    if (builtin::blessed $arg) {
+      Carp::croak("non-Text section passed as argument to BlockKit context sugar")
+        unless $arg->isa('Slack::BlockKit::CompObj::Text');
+
+      push @elements, $arg;
+      next ARG;
+    }
+
+    if (ref $arg) {
+      Carp::croak("unblessed reference passed as argument to BlockKit context sugar");
+    }
+
+    push @elements, Slack::BlockKit::CompObj::Text->new({
+      type => 'mrkdwn',
+      text => $arg,
+    });
+  }
+
+  return Slack::BlockKit::Block::Context->new({ elements => \@elements });
+}
+
 =func divider
 
   my $divider = divider();
@@ -591,8 +627,8 @@ sub header ($arg) {
 
 This function returns a L<section object|Slack::BlockKit::Block::Section>.  You
 can pass it a text object, which will be used as the C<text> property of the
-section.  You can pass it a string string, which will be promoted the a text
-object and then used the same way.
+section.  You can pass it a string, which will be promoted the a text object
+and then used the same way.
 
 Otherwise, you'll have to pass a reference to a hash of argument that will be
 passed to the section constructor.  If this function feels weird, it might just
@@ -624,8 +660,8 @@ sub section ($arg) {
   my $text_obj = mrkdown($text_string, \%arg);
 
 This returns a L<text composition object|Slack::BlockKit::CompObj::Text> with a
-type of C<mrkdwn> and the given string string as its text.  The C<\%arg> option
-is optional.  If given, it's extra parameters to pass to the text object
+type of C<mrkdwn> and the given string as its text.  The C<\%arg> option is
+optional.  If given, it's extra parameters to pass to the text object
 constructor.
 
 For C<plain_text> text composition objects, see the C<text> function.
@@ -647,8 +683,8 @@ sub mrkdwn ($text, $arg=undef) {
   my $text_obj = text($text_string, \%arg);
 
 This returns a L<text composition object|Slack::BlockKit::CompObj::Text> with a
-type of C<plain_text> and the given string string as its text.  The C<\%arg>
-option is optional.  If given, it's extra parameters to pass to the text object
+type of C<plain_text> and the given string as its text.  The C<\%arg> option is
+optional.  If given, it's extra parameters to pass to the text object
 constructor.
 
 For C<mrkdwn> text composition objects, see the C<mrkdwn> function.

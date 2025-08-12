@@ -13,6 +13,7 @@ rejiggered whenever convenient.  You can always read the source!
 use MooseX::Types -declare => [qw(
   RichTextBlocks
   ExpansiveElementList
+  ContextElementList
   Pixels
   RichTextArray
   RichTextStyle
@@ -34,6 +35,12 @@ subtype ExpansiveElementList, as ArrayRef[
     map {; class_type("Slack::BlockKit::Block::RichText::$_") }
       (qw( Channel Date Emoji Link Text User UserGroup ))
   ])
+];
+
+subtype ContextElementList, as ArrayRef[
+  # This should really be union-ed with Image, but we don't have an Image type,
+  # so there you go. -- rjbs, 2025-08-12
+  class_type("Slack::BlockKit::CompObj::Text"),
 ];
 
 subtype RichTextArray, as ArrayRef[
