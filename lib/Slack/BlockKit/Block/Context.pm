@@ -15,8 +15,8 @@ text.  A "normal" section block can only present rich text in the form of
 C<mrkdwn>-type text objects.
 
 A C<context> block is similar to a C<section> block, but can contain images.
-Also, it seems like a C<section> block might be vertically spaced differently?
-It's a bit of a muddle.
+Also, it seems like a C<section> block is a bit smaller, textwise?  It's a bit
+of a muddle.
 
 =cut
 
