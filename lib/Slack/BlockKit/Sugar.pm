@@ -96,7 +96,7 @@ use Sub::Exporter -setup => {
     qw( bold code italic strike ), # specialized richtext()
 
     # Other Things
-    qw( context divider header markdown section ),
+    qw( context divider header image markdown section ),
     qw( mrkdwn text ),
   ],
 };
@@ -616,6 +616,30 @@ sub header ($arg) {
   }
 
   return Slack::BlockKit::Block::Header->new({ text => text($arg) });
+}
+
+=func image
+
+  my $image = image($url, $alt_text);
+  # or
+  my $image = image($url, $alt_text, \%arg);
+
+This function returns an L<image block object|Slack::BlockKit::Block::Image>
+for the given URL, with the given alt text.
+
+The optional C<\%arg> parameter contains additional attributes to be passed to
+the Image object constructor.
+
+=cut
+
+sub image ($url, $alt_text, $arg = undef) {
+  $arg //= {};
+
+  Slack::BlockKit::Block::Image->new({
+    %$arg,
+    image_url => $url,
+    alt_text  => $alt_text,
+  });
 }
 
 =func markdown
