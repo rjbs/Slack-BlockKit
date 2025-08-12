@@ -59,6 +59,7 @@ use Slack::BlockKit::Block::RichText::UserGroup;
 use Slack::BlockKit::Block::Context;
 use Slack::BlockKit::Block::Divider;
 use Slack::BlockKit::Block::Header;
+use Slack::BlockKit::Block::Markdown;
 use Slack::BlockKit::Block::Section;
 use Slack::BlockKit::CompObj::Text;
 

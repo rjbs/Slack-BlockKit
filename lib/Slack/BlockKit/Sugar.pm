@@ -96,7 +96,8 @@ use Sub::Exporter -setup => {
     qw( bold code italic strike ), # specialized richtext()
 
     # Other Things
-    qw( context divider header mrkdwn text section )
+    qw( context divider header markdown section ),
+    qw( mrkdwn text ),
   ],
 };
 
@@ -615,6 +616,22 @@ sub header ($arg) {
   }
 
   return Slack::BlockKit::Block::Header->new({ text => text($arg) });
+}
+
+=func markdown
+
+  my $text_obj = markdown($text_string);
+
+This returns a L<Markdown block object|Slack::BlockKit::CompObj::Text> with the
+given string as its text.  Don't confuse this with C<mrkdwn>, which produces a
+text composition object.
+
+=cut
+
+sub markdown ($text) {
+  Slack::BlockKit::Block::Markdown->new({
+    text => $text,
+  });
 }
 
 =func section
