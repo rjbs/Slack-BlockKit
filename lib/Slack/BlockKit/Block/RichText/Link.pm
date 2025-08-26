@@ -43,8 +43,15 @@ has text => (
 
 =attr unsafe
 
-This is a boolean indicating whether the link is unsafe.  The author has not
-figured out what this actually I<does> and so never uses it.
+This is a boolean indicating whether the link is unsafe.
+
+When set to true, this disables Slack's automatic URL sanitization. This allows
+the use of non-standard URI schemes or custom protocols, which Slack's default
+security measures would typically prevent.
+
+It's called "unsafe" because it bypasses these default safety checks, so it
+should be used with caution and only when you're confident in the integrity of
+the URI you're providing.
 
 =cut
 
